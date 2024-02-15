@@ -394,7 +394,7 @@ class TerminalViewState extends State<TerminalView> {
     setState(() => _composingText = text);
   }
 
-  KeyEventResult _handleKeyEvent(FocusNode focusNode, RawKeyEvent event) {
+  KeyEventResult _handleKeyEvent(FocusNode focusNode, KeyEvent event) {
     final resultOverride = widget.onKey?.call(focusNode, event);
     if (resultOverride != null && resultOverride != KeyEventResult.ignored) {
       return resultOverride;
@@ -410,7 +410,7 @@ class TerminalViewState extends State<TerminalView> {
       return shortcutResult;
     }
 
-    if (event is! RawKeyDownEvent) {
+    if (event is! KeyDownEvent) {
       return KeyEventResult.ignored;
     }
 
