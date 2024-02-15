@@ -129,7 +129,7 @@ class TerminalView extends StatefulWidget {
 
   /// Keyboard event handler of the terminal. This has higher priority than
   /// [shortcuts] and input handler of the terminal.
-  final FocusOnKeyCallback? onKey;
+  final FocusOnKeyEventCallback? onKey;
 
   /// True if no input should send to the terminal.
   final bool readOnly;
@@ -422,9 +422,9 @@ class TerminalViewState extends State<TerminalView> {
 
     final handled = widget.terminal.keyInput(
       key,
-      ctrl: event.isControlPressed,
-      alt: event.isAltPressed,
-      shift: event.isShiftPressed,
+      ctrl: HardwareKeyboard.instance.isControlPressed,
+      alt: HardwareKeyboard.instance.isAltPressed,
+      shift: HardwareKeyboard.instance.isShiftPressed,
     );
 
     if (handled) {
